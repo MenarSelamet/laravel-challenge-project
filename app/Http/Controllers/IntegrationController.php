@@ -31,5 +31,13 @@ class IntegrationController extends Controller
 
         return response()->json(['data' => $integration]);
     }
+    public function destroy($id): JsonResponse
+    {
+        $integration = Integration::findOrFail($id);
+
+        $integration->delete();
+
+        return response()->json(['message' => 'Integration deleted successfully']);
+    }
 
 }

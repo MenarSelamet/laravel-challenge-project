@@ -14,3 +14,4 @@ Route::post("login", [AuthController::class, "login"]);
 
 Route::post('/integrations', [IntegrationController::class, 'store']);
 Route::put('/integrations/{id}', [IntegrationController::class, 'update']);
+Route::delete('integrations/{id}', [IntegrationController::class, 'destroy']);
