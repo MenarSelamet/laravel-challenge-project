@@ -21,5 +21,15 @@ class IntegrationController extends Controller
             'user' => $user,
         ]);
     }
+    public function update(IntegrationRequest $request, $id): JsonResponse
+    {
+        $validatedData = $request->validated();
+
+        $integration = Integration::findOrFail($id);
+
+        $integration->update($validatedData);
+
+        return response()->json(['data' => $integration]);
+    }
 
 }
