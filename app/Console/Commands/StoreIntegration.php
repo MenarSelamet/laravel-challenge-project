@@ -38,4 +38,4 @@ class StoreIntegration extends Command
 
         $this->info("Integration '{$integration->username}' stored successfully.");
     }
-    }
+}

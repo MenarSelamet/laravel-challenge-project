@@ -16,13 +16,13 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard("api")->check()) {
+        if (Auth::guard('api')->check()) {
             return $next($request);
         }
-        return response()->json([
-            'message' => 'You are not Authorized'
-        ], 401);
 
+        return response()->json([
+            'message' => 'You are not Authorized',
+        ], 401);
 
     }
 }

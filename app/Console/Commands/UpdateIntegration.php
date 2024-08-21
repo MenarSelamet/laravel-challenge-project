@@ -35,7 +35,7 @@ class UpdateIntegration extends Command
         $integration->update([
             'marketplace' => $marketplace,
             'username' => $username,
-            'password' => $password
+            'password' => $password,
         ]);
 
         $this->info("Integration '{$integration->username}' updated successfully.");
