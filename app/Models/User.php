@@ -23,6 +23,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function integration()
+    {
+        return $this->hasMany(Integration::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
