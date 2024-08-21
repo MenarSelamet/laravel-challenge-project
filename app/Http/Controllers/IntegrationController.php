@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\IntegrationRequest;
 use App\Models\Integration;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class IntegrationController extends Controller
 {
     public function store(IntegrationRequest $request): JsonResponse
     {
-        $user = auth(guard: "api")->user();
+        $user = auth(guard: 'api')->user();
         $validatedData = $request->validated();
 
         $integration = Integration::create($validatedData);
@@ -21,6 +20,7 @@ class IntegrationController extends Controller
             'user' => $user,
         ]);
     }
+
     public function update(IntegrationRequest $request, $id): JsonResponse
     {
         $validatedData = $request->validated();
@@ -31,6 +31,7 @@ class IntegrationController extends Controller
 
         return response()->json(['data' => $integration]);
     }
+
     public function destroy($id): JsonResponse
     {
         $integration = Integration::findOrFail($id);
@@ -39,5 +40,4 @@ class IntegrationController extends Controller
 
         return response()->json(['message' => 'Integration deleted successfully']);
     }
-
 }

@@ -20,34 +20,34 @@ class AuthController extends Controller
             'data' => $user,
         ], 201);
     }
+
     public function login(LoginRequest $request): JsonResponse
     {
         $input = $request->validated();
         $email = $input['email'];
         $password = $input['password'];
 
-        $user = User::where("email", $email)->first();
-        if (!empty($user)) {
+        $user = User::where('email', $email)->first();
+        if (! empty($user)) {
             if (Hash::check($password, $user->password)) {
-                $token = $user->createToken("mytoken")->accessToken;
+                $token = $user->createToken('mytoken')->accessToken;
 
                 return response()->json([
-                    "status" => true,
-                    "message" => "Login successful",
-                    "token" => $token,
+                    'status' => true,
+                    'message' => 'Login successful',
+                    'token' => $token,
                 ]);
             } else {
                 return response()->json([
-                    "status" => false,
-                    "message" => "Password didn't match",
+                    'status' => false,
+                    'message' => "Password didn't match",
                 ]);
             }
         } else {
             return response()->json([
-                "status" => false,
-                "message" => "Invalid Email value",
+                'status' => false,
+                'message' => 'Invalid Email value',
             ]);
         }
     }
-
 }
