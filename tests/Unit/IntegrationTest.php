@@ -49,4 +49,19 @@ class IntegrationTest extends TestCase
 
 
     }
+
+    public function test_destroy_integration()
+    {
+        $integration = Integration::factory()->create([
+            'marketplace' => 'n11',
+            'username' => 'olduser',
+            'password' => 'oldpassword',
+        ]);
+
+        $response = $this->deleteJson('/api/integrations/' . $integration->id);
+
+        $response->assertStatus(200);
+
+
+    }
 }
