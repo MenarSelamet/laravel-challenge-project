@@ -9,3 +9,4 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:api');
 
 Route::post('/register', [AuthController::class, 'create']);
+Route::post("login", [AuthController::class, "login"]);
