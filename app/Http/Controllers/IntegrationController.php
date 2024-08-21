@@ -10,14 +10,14 @@ class IntegrationController extends Controller
 {
     public function store(IntegrationRequest $request): JsonResponse
     {
-        // $user = auth(guard: 'api')->user();
+        $user = auth(guard: 'api')->user();
         $validatedData = $request->validated();
 
         $integration = Integration::create($validatedData);
 
         return response()->json([
             'data' => $integration,
-            // 'user' => $user,
+            'user' => $user,
         ]);
     }
 

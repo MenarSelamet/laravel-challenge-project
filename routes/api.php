@@ -12,13 +12,16 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [AuthController::class, 'create']);
 Route::post('login', [AuthController::class, 'login']);
 
-// Route::prefix('integrations')->middleware('user_auth')->group(function () {
-//     Route::post('/', [IntegrationController::class, 'store']);
-//     Route::put('{id}', [IntegrationController::class, 'update']);
-//     Route::delete('{id}', [IntegrationController::class, 'destroy']);
-// });
+Route::prefix('integrations')->middleware('user_auth')->group(function () {
+    Route::post('/', [IntegrationController::class, 'store']);
+    Route::put('{id}', [IntegrationController::class, 'update']);
+    Route::delete('{id}', [IntegrationController::class, 'destroy']);
+});
 
 
-Route::post('/integrations', [IntegrationController::class, 'store']);
-Route::put('/integrations/{id}', [IntegrationController::class, 'update']);
-Route::delete('/integrations/{id}', [IntegrationController::class, 'destroy']);
+
+// To use while testing
+
+// Route::post('/integrations', [IntegrationController::class, 'store']);
+// Route::put('/integrations/{id}', [IntegrationController::class, 'update']);
+// Route::delete('/integrations/{id}', [IntegrationController::class, 'destroy']);
